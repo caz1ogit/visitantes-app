@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Visitantes</title>
+    <link rel="icon" type="image/png" href="img/favi.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="logo" style="color: #0056b3; font-size: 1.5em;">Sistema de Visitantes</h1>
+        
+        <div id="loading-container">
+            <h1 id="welcomeTitle">Verificando Acesso...</h1>
+            <p>Por favor, aguarde enquanto validamos seu convite.</p>
+            </div>
+
+        <div id="error-container" style="display: none;">
+            <h1 id="errorTitle"></h1>
+            <p id="errorMessage"></p>
+        </div>
+        
+        <div id="form-content" style="display: none;">
+             <h1 id="formWelcomeTitle"></h1> <p>Por favor, preencha as informações abaixo para confirmar seu acesso.</p>
+            <form id="infoForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label>Captura de Biometria Facial:</label>
+                <div id="camera-container">
+                    <video id="cameraFeed" autoplay playsinline></video>
+                    <img id="photoPreview" alt="Foto capturada">
+                    <i class="fas fa-camera"></i>
+                </div>
+
+                <button type="button" id="cameraBtn"><i class="fas fa-camera"></i> Abrir Câmera</button>
+                <input type="file" id="cameraInput" accept="image/*" style="display: none;">
+
+                <div id="termsContainer">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms">
+                    <label for="agreeTerms">Eu li e aceito os <a href="#" id="termsLink">termos e condições</a>.</label>
+                </div>
+                
+                <button type="submit" id="submitButton" class="disabled" disabled>Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Termos e Condições</h2>
+            <div id="termsText">
+                <p><strong>1. Uso da Plataforma</strong></p>
+                <p>Ao acessar e usar a plataforma de visitantes, você concorda em cumprir estes termos. O uso da plataforma é estritamente para a finalidade de verificação de acesso e biometria facial, conforme estabelecido pelo proprietário do serviço.</p>
+                
+                <p><strong>2. Coleta de Dados</strong></p>
+                <p>Coletamos seu nome e uma imagem de sua biometria facial para fins de segurança e validação de acesso. Seus dados de geolocalização e um identificador único de seu dispositivo (fingerprint) também são coletados no primeiro acesso para vincular este convite ao seu dispositivo e prevenir fraudes. Esses dados são armazenados de forma segura e utilizados apenas para os propósitos descritos.</p>
+                
+                <p><strong>3. Armazenamento e Segurança</strong></p>
+                <p>Todos os dados coletados são armazenados em um ambiente seguro e são acessíveis apenas por pessoal autorizado. Empregamos medidas de segurança padrão do setor para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+                
+                <p><strong>4. Consentimento e Acesso</strong></p>
+                <p>Ao aceitar estes termos, você dá seu consentimento expresso para a coleta, processamento e armazenamento de seus dados conforme descrito nesta política. A negação do acesso à câmera ou à geolocalização resultará na impossibilidade de prosseguir com a verificação e o acesso será negado.</p>
+                
+                <p><strong>5. Propriedade Intelectual</strong></p>
+                <p>Todo o conteúdo presente nesta plataforma, incluindo textos, gráficos, logos e o software, é de propriedade do sistema e protegido por leis de direitos autorais. O uso não autorizado é proibido.</p>
+
+                <p><strong>6. Alterações nos Termos</strong></p>
+                <p>O sistema se reserva o direito de modificar estes termos a qualquer momento. Quaisquer alterações entrarão em vigor imediatamente após a sua publicação na plataforma. Seu uso continuado da plataforma após as alterações constitui sua aceitação dos novos termos.</p>
+
+                <p><strong>7. Contato</strong></p>
+                <p>Para dúvidas ou mais informações sobre estes termos, entre em contato conosco através dos canais de suporte disponíveis.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3.3.0/dist/fp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

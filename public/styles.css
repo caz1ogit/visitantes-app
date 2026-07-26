@@ -1,0 +1,288 @@
+* { 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    padding: 20px; 
+    background-color: #f0f4f8; 
+    color: #333;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0; 
+}
+
+.container { 
+    max-width: 600px; 
+    width: 90%; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+#logo { 
+    max-width: 180px; 
+    height: auto; 
+    margin-bottom: 10px; 
+}
+
+h1 { 
+    color: #0056b3;
+    margin-bottom: 5px; 
+    font-size: 2em; 
+    font-weight: 600; 
+}
+
+p { 
+    color: #555; 
+    line-height: 1.6; 
+    margin: 0;
+    font-size: 1em;
+}
+
+label { 
+    display: block; 
+    color: #333; 
+    text-align: left; 
+    font-weight: 500; 
+    font-size: 0.9em; 
+    width: 100%;
+    margin-bottom: 5px; 
+}
+
+input[type="text"] { 
+    width: 100%; 
+    padding: 14px; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    font-size: 1em;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+input[type="text"]:focus { 
+    border-color: #007bff; 
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); 
+    outline: none; 
+}
+
+input[type="checkbox"] { 
+    width: auto; 
+    margin-right: 10px; 
+}
+
+#termsContainer { 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    width: 100%;
+    margin-top: 10px;
+}
+#termsContainer label {
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+#termsLink {
+    color: #007bff;
+    text-decoration: none; 
+    font-weight: 500;
+    border-bottom: 1px solid #007bff;
+    padding-bottom: 2px;
+    transition: color 0.3s;
+}
+#termsLink:hover {
+    color: #0056b3;
+}
+
+
+#submitButton { 
+    width: 100%; 
+    padding: 15px; 
+    border: none; 
+    border-radius: 10px; 
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white; 
+    font-size: 1.1em; 
+    font-weight: 600;
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+#submitButton:hover:not(.disabled) { 
+    transform: translateY(-3px); 
+    box-shadow: 0 7px 20px rgba(0, 123, 255, 0.4); 
+}
+
+button.disabled { 
+    background: #ccc; 
+    color: #888; 
+    cursor: not-allowed; 
+    box-shadow: none; 
+    transform: none; 
+}
+
+#camera-container { 
+    width: 100%; 
+    margin: 10px 0; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    background-color: #e9ecef; 
+    min-height: 250px; 
+    position: relative; 
+    border: 2px dashed #adb5bd; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#photoPreview, #cameraFeed { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+}
+
+#cameraFeed {
+    transform: scaleX(-1);
+}
+
+#camera-container i {
+    font-size: 50px; 
+    color: #adb5bd;
+}
+
+#cameraBtn { 
+    background: transparent; 
+    color: #007bff; 
+    border: 2px solid #007bff;
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    font-weight: 500; 
+    width: 100%; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+#cameraBtn:hover { 
+    background-color: #007bff; 
+    color: white; 
+}
+
+#cameraBtn i { 
+    margin-right: 8px; 
+}
+
+#form-content { 
+    display: flex; 
+    width: 100%; 
+    flex-direction: column;
+    gap: 15px;
+}
+
+#message-container { 
+    display: none; 
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+.error-message { 
+    color: #721c24; 
+    background-color: #f8d7da; 
+    border: 1px solid #f5c6cb;
+}
+.info-message { 
+    color: #0c5460; 
+    background-color: #d1ecf1; 
+    border: 1px solid #bee5eb;
+}
+.expired-message { 
+    color: #856404; 
+    background-color: #fff3cd; 
+    border: 1px solid #ffeeba;
+}
+
+/* Estilos do Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px;
+    border: none;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#termsText {
+    text-align: left;
+    font-size: 0.95em;
+    color: #444;
+    height: 350px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+#termsText::-webkit-scrollbar {
+    width: 10px;
+}
+#termsText::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+#termsText::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+#termsText::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
